@@ -1,0 +1,20 @@
+## Training and Validation Losses
+
+picture_counter_0 The image is a line graph titled "Training and Validation Losses." It has two lines: one blue line labeled "train" and one orange line labeled "val_accuracy." The x-axis represents the number of epochs, ranging from 0 to 12, and the y-axis represents the loss, ranging from 0 to 400. The training loss starts high around 375 and decreases sharply, stabilizing below 50. The validation accuracy remains relatively low and stable throughout the epochs.
+
+Figure 8. Training and validation losses of the best model.
+
+Figure 9. Training and test ROC curve of the best achieved model.
+
+picture_counter_1 The image is a Receiver Operating Characteristic (ROC) curve graph. It shows two curves: one for the training data (blue) with an area under the curve (AUC) of 0.99, and another for the test data (orange) with an AUC of 0.95. The x-axis represents the false positive rate, and the y-axis represents the true positive rate. A diagonal dashed line indicates the line of no-discrimination.
+
+Figure10. Confusion matrix of the best model.
+
+picture_counter_2 The image is a confusion matrix with two classes: Normal and COVID-19. It shows the following values:
+
+- True Positives (COVID-19 correctly identified as COVID-19): 192
+- True Negatives (Normal correctly identified as Normal): 188
+- False Positives (Normal incorrectly identified as COVID-19): 12
+- False Negatives (COVID-19 incorrectly identified as Normal): 8
+
+The matrix uses different shades of blue to differentiate between the cells.

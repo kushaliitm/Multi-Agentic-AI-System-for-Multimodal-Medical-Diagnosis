@@ -1,0 +1,29 @@
+## Preprocessing
+
+The purpose of the pre-processing phase is to prepare the X-ray images for classification using CNN pre-trained models. In this phase, different pre-processing steps are applied to improve the performance of the classification. The pre-processing steps can be summarized as follows:
+
+| Classes         | Normal   |   Positive COVID-19 |   Viral pneumonia |   Lung opacity |
+|-----------------|----------|---------------------|-------------------|----------------|
+| Number of cases | 10,192   |                3616 |              1345 |           6012 |
+
+Table 1. COVID-19 radiography database distribution.
+
+picture_counter_0 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and ribcage. The lungs appear as dark areas on either side of the heart, which is centrally located. The ribs are faintly visible, curving around the lungs. The diaphragm is visible at the bottom of the image.
+
+Normal-3
+
+picture_counter_1 The image is a chest X-ray showing the thoracic cavity, including the rib cage, spine, and parts of the shoulder. The lungs and heart are visible, with the lungs appearing darker due to air content. The diaphragm is also visible at the bottom of the image.
+
+picture_counter_2 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The ribs and spine are visible, providing a clear view of the lung fields and mediastinum.
+
+COVID-31
+
+picture_counter_3 The image is a chest X-ray showing the thoracic cavity, including the lungs and heart. There are medical devices visible, such as electrodes or wires, possibly indicating a patient under monitoring. The lungs appear to be the primary focus, likely for diagnostic analysis.
+
+Viral Pneumonia-13
+
+Lung\_Opacity-7
+
+Figure 1. Samples from COVID-19 radiography chest database representing different classes.
+
+Vol.:(0123456789)

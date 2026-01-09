@@ -1,0 +1,14 @@
+## Experimental results
+
+This section presents the experimental results of the proposed framework to evaluate its performance and study the effect of different enhancements applied to the X-ray images on the performance of the CNN classification model.
+
+
+## Experimental setup
+
+Keras Python deep learning library on top of TensorFlow was utilized for implementing CNN models on a machine with the following specification; an   Intel  Core™ i7 CPU@ 3.6 GHz with 32 GB RAM and a Titan × ® Pascal Graphics Processing Unit (GPU). Extensive experiments were carried out to obtain the best settings of the CNN models that achieve the best possible results. It is worth noting that the pre-processing for enhancing the images has been carried out using   MATLAB 18 software. ®
+
+Both the full and segmented datasets with their enhanced versions have been used to train VGG19 and EfficientNetB0 CNN pre-trained models. The training was carried on with Adam optimizer, learning rate of 0.001, batch size of 32, and the number of epochs (10-30) epochs, SoftMax classifier. The fine-tuned pre-trained models were used for feature extraction; therefore, the weights of the pre-trained models were frozen, and they were not updated during the training to maintain ImageNet's initial weights. The top layers were fine-tuned to adjust the
+
+Figure 4. The framework of the used methodology for Chest X-ray images classification.
+
+picture_counter_0 The image is a flowchart showing a process involving medical image enhancement and segmentation for disease diagnosis using AI models. On the left, it includes a section labeled "Original & enhancements" with images titled Original, Enhanced HE, Enhanced CLAHE, and Complement. These images are connected by lines to a section labeled "Segmented," which involves a multiplication process with a mask. From both sections, lines lead to two AI models on the right: VGG19 and EfficientNetB0, indicating the use of transfer learning. The connections are color-coded, suggesting different pathways or processes.

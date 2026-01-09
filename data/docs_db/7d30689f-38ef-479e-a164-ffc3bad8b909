@@ -1,0 +1,9 @@
+## Related work
+
+Recently, many works have been developed to detect and diagnose COVID-19 and other lung diseases based on different medical image modalities using different machine learning techniques especially deep learning and transfer learning. The purpose of all these works is to improve the performances of the methodologies used in the detection and classification of COVID-19 and other lung diseases. Where the proposed research will use X-ray images as a medical image modality, the focus in this section will be on the previous work based on X-rays.
+
+Nishio, et al. 19 presented a system based on VGG16 to classify images of chest X-rays as healthy, COVID-19 pneumonia, and non-COVID-19 pneumonia. They applied the proposed system to 1248 X-ray images collected from 2 different public datasets. The collected X-ray images contain 500 healthy samples, 215 images for COVID19 pneumonia patients and 533 images for non-COVID-19 pneumonia patients. The achieved accuracy was 83.6%, while the sensitivity was 90.9%.
+
+Minaee et al. 20 applied deep learning to recognize COVID-19 cases using chest X-rays images. Transfer learning was used to train 4 CNN models which are DenseNet-121, SqueezeNet, ResNet50, and ResNet18 to binary classify images as COVID-19 or not. The training was applied to 84 (420 after augmentation) COVID-19 images and 2000 non-Covid images, while the test was applied to 100 COVID-19 images and 3000 non-COVID images. The best achieved sensitivity of these models was 98%, while the specificity was 92.9% for the SqueezeNet model.
+
+Sahin 21 proposed a CNN model for binary classification of COVID-19 cases as COVID and Normal using chest X-ray images. Also, two pre-trained models which are ResNet50 and MobileNetv2 are applied to the used dataset of 13,824 X-ray images. The proposed CNN model achieved an accuracy of 96.71% and F1-score of

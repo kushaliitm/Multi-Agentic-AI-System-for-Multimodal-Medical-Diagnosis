@@ -1,0 +1,20 @@
+## Mul/g415plica/g415on
+
+
+## Segmented Lung region
+
+picture_counter_8 The image shows a pair of lung X-ray scans. The lungs are displayed side by side against a black background, with visible patterns that may indicate areas of interest for medical analysis.
+
+(a) Original COVID-31
+
+picture_counter_9 The image shows a segmented view of human lungs, likely extracted from a chest X-ray or similar imaging technique. The lungs are displayed against a black background, highlighting their structure and any visible patterns or anomalies. The segmentation appears to isolate the lung regions for analysis.
+
+( b) Enhanced HE
+
+(c) Enhanced CLAHE
+
+(D) Complement
+
+Figure 3. X-ray original image and its enhanced versions and the segmented lung region of each version.
+
+the training process, it was found that the size of 112 × 112 pixels expedited the training without affecting the performance metrics.

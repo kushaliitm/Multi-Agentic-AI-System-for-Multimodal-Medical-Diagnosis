@@ -1,0 +1,17 @@
+Vol:.(1234567890)
+
+
+## Image enhancement
+
+Enhancing images is a significant step for the correct classification. It increases image contrast in order to improve classification performance. Different techniques can be applied to enhance the images. In this research, some of these techniques have been applied to the original X-ray images before introducing them to the classification models, they are as follows:
+
+- 1. Histogram Equalization (HE): The purpose of histogram equalization (HE) is to spread the gray levels inside the image. It modifies the brightness and contrast of the images to improve the image   quality 27 . The original X-ray images' intensity has been enhanced using histogram equalization (HE).
+- 2. Contrast Limited Adaptive Histogram Equalization (CLAHE): It originated from Global Histogram Equalization (GHE), it is based on dividing the image into non-overlapping blocks, and after that, the histogram of each block is gotten using a pre-specified   value 28 . In this research, CLAHE has been used to enhance the contrast of original X-ray images.
+- 3. Image Complement: The complement or inverse of X-ray images transforms the dark positions to lighter and the light positions to darker. As this is a standard process, which is similar to that used by radiologists, it may aid a deep learning model for improving classification performance. The complement of the binary image can be obtained by changing the zeros to ones and ones to zeros. Whereas for a grayscale image, each pixel is subtracted from 255.
+
+Figure 2 shows an original X-ray image and its enhanced versions after applying HE, CLAHE and image complement on the original image with the corresponding histogram plots for each version.
+
+
+## Segmentation
+
+In the segmentation step, the regions of interest (ROI), which are the lungs region in our case, are cropped from the associated image. In this research, the ground truth lungs' masks which are provided by the database have been used. A modified U-Net model was applied by the authors of the database on the X-ray images to get the lung masks associated with the full X-ray images. In this research, multiplication between each original image and the associated lung mask has been applied to get the segmented lungs. The same process of multiplication between different enhanced image versions and the associated masks has been applied to get different versions of segmented datasets with different enhancements. All these versions are introduced to CNN models as segmented versions of data. Figure 3 shows the segmented images of the original image and of the different enhanced images for one of the COVID samples.

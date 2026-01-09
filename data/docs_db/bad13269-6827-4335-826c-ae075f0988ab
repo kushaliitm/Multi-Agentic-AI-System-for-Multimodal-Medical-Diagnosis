@@ -1,0 +1,7 @@
+## Training and Validation Accuracy Accuracy
+
+Figure 7. Training and validation accuracy of the best model.
+
+picture_counter_0 The image is a line graph showing training and validation accuracy over epochs. The x-axis represents the epoch number, ranging from 0 to 11, and the y-axis represents accuracy, ranging from 0.88 to 1.00. Two lines are present: a blue line for training accuracy and an orange line for validation accuracy. Both lines show an initial increase, with training accuracy reaching around 0.98 and validation accuracy slightly below that. The lines then fluctuate slightly while maintaining high accuracy. A legend identifies the lines as "train" and "val_accuracy."
+
+Vol.:(0123456789)

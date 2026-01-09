@@ -1,0 +1,23 @@
+picture_counter_0 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The lungs appear with visible rib outlines, and the heart is centrally located. There are no annotations or overlays present in the image.
+
+(a) Original COVID-31
+
+picture_counter_1 The image shows a binary mask of lungs, where the lung regions are highlighted in white against a black background. The shape of the lungs is clearly defined, indicating segmentation typically used in medical imaging analysis.
+
+Mask of COVID-31
+
+picture_counter_2 The image shows a grayscale X-ray of human lungs. The lungs are isolated against a black background, highlighting their structure and any potential abnormalities. The texture and shading within the lung areas may indicate variations in tissue density.
+
+picture_counter_3 The image is a chest X-ray showing the thoracic region, including the lungs, heart, and surrounding structures. The ribs and spine are visible, providing a view of the internal chest anatomy.
+
+(D) Complement
+
+picture_counter_4 The image shows a 3D rendering of human lungs. The lungs are displayed side by side, showcasing their anatomical structure. The texture appears to illustrate internal features, possibly highlighting areas of interest for medical analysis.
+
+picture_counter_5 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The lungs appear as dark areas on either side of the heart, which is centrally located. The ribs and spine are visible as lighter structures, and the diaphragm can be seen at the bottom of the image.
+
+( b) Enhanced HE
+
+picture_counter_6 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The ribs and spine are faintly visible. The image is likely used for diagnostic purposes in medical research.
+
+(c) Enhanced CLAHE

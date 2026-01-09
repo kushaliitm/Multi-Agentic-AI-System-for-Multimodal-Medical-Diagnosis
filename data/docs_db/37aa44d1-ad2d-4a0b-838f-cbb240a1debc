@@ -1,0 +1,21 @@
+Table 5. The results of applying EfficientNetB0 to original and different enhanced versions of the used dataset after segmentation.
+
+| Dataset              |   Tn |   Fp |   Tp |   Fn |   Sensitivity |   Specificity |   Precision |   F1 score |   Test acc |    AUC |
+|----------------------|------|------|------|------|---------------|---------------|-------------|------------|------------|--------|
+| Segmented original   |  160 |   40 |  194 |    6 |         0.97  |         0.8   |      0.829  |     0.894  |     0.885  | 0.885  |
+| Segmented Histeq     |  181 |   19 |  181 |   19 |         0.905 |         0.905 |      0.905  |     0.905  |     0.905  | 0.905  |
+| Segmented CLAHE      |  183 |   17 |  179 |   21 |         0.895 |         0.915 |      0.9133 |     0.904  |     0.905  | 0.905  |
+| Segmented complement |  174 |   26 |  189 |   11 |         0.945 |         0.87  |      0.879  |     0.9108 |     0.9075 | 0.9075 |
+
+of the full X-ray images and segmented images using the same CNN model, reductions in the performance of the CNN models trained using the segmented datasets rather than those trained using full-image datasets were observed. The models built using full images achieved better performance in general. The reason for that might be that the full images may have more details outside the lung region in the surroundings region that contribute to the classification and help to improve the performance.
+
+Regarding the comparison of the used 2 CNNs models, the results of the two models are close to each other, however, the results of VGG19 are a bit better than those of EfficientNetB0. The best achieved performance is of the VGG19 model trained using the CLAHE version of full X-ray images for binary classification of chest X-ray images into COVID-19 or normal. It achieved a sensitivity of 0.96, specificity of 0.94, precision of 0.9412, F1 score of 0.9505 and accuracy of 0.95. Figures 7, 8, 9 and 10 show the training and validation accuracies, the training and validation losses, the training and test ROC curve and the confusion matrix of that best achieved model respectively.
+
+
+## Discussion
+
+Distinguishing COVID-19 from normal and other classes is one of the important issues since the pandemic in 2019. The contribution of this research is to develop a framework to classify Coronavirus suspected cases as normal or COVID-19 positive cases. Different pre-processing steps have been applied to improve the performance of the classification. After that, multiplication between the original images and the associated lung masks has been applied to get the segmented lungs. The same process of multiplication has been applied between different enhanced image versions and the associated masks to get different enhanced versions of segmented datasets. All these versions are introduced to CNN models which are VGG19 and EfficientNetB0. Therefore, two different approaches have been used to train pre-trained CNN models using transfer learning. The first approach uses full chest X-ray images, while the other approach uses lung segmented images.
+
+From the results of conducted experiments, it has been observed that the proposed framework has achieved a good performance using either full or segmented images, however the performance using full images is better than that using segmented. Moreover, it has been observed that the performance of the classification models has been improved after applying enhancement techniques.
+
+To evaluate the proposed framework with respect to the state-of-the-art works in COVID-19, it has been compared with the related works reviewed in this research as described in Table 6. It is worth mentioning that, the comparison is not an easy task in COVID research as the pandemic broke out in the world suddenly, all Covid research used different sources of data either local, public, or combined from different databases. Some of the public datasets are collected from different other databases. Even the research that used the same public

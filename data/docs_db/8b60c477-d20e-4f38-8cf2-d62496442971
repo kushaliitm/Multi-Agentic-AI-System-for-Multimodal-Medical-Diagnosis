@@ -1,0 +1,37 @@
+## Resizing images phase
+
+Resizing the images is an essential process to satisfy the requirement of CNN of equally sized input images. In this research, the process of resizing X-ray images has been done to fit all X-ray images to the input size of the used pre-trained CNN models which are VGG19 and EfficientNetB0. Therefore, all images' versions either full or segmented versions were resized to fit the CNNs input image size which is 224 × 224 pixels. To expedite
+
+picture_counter_0 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The lungs appear with varying shades of gray, indicating different tissue densities. The spine is visible in the center, and the ribs are seen curving around the lungs. There are no annotations or markings on the image.
+
+picture_counter_1 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The lungs appear prominently, with visible rib outlines. The heart is centrally located, and the spine is faintly visible behind the mediastinum. There is no additional text, labels, or graphical elements present.
+
+picture_counter_2 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The ribs and spine are also visible.
+
+picture_counter_3 The image is a chest X-ray showing the thoracic cavity, including the lungs, heart, and surrounding structures. The lungs appear to have some opacity, which may indicate abnormalities. The spine and ribs are also visible.
+
+(a) Original COVID-31
+
+picture_counter_4 The image is a histogram with blue bars. The x-axis ranges from 0 to 255, and the y-axis ranges from 0 to 3000. The histogram shows several peaks, notably around the 50, 125, 175, and 225 marks on the x-axis, indicating varying frequencies of pixel intensity values.
+
+( b) Enhanced HE
+
+picture_counter_5 The image is a bar plot with blue vertical bars. The x-axis ranges from 0 to 255, and the y-axis ranges from 0 to 3500. The bars vary in height, indicating different frequencies or values for each x-axis category. There is no additional context or labels provided.
+
+(c) Enhanced CLAHE
+
+(d) Complement
+
+picture_counter_6 The image is a histogram displaying data distribution. The x-axis ranges from 0 to 250, and the y-axis ranges from 0 to 3000. The bars show varying heights, indicating the frequency of data points across the range. The distribution appears to be unimodal with a peak around 150-200, and there is a noticeable spike at the beginning near 0.
+
+(e) Histogram of original image
+
+picture_counter_7 The image is a histogram displaying frequency distribution data. The x-axis ranges from 0 to 255, and the y-axis ranges from 0 to 3000. The bars show several peaks, with the most significant concentrations between 50 and 150, and a smaller peak near 250.
+
+(f) Histogram of HE image
+
+(g) Histogram of CLAHE
+
+(h) Histogram of complement
+
+Figure 2. An X-ray image and its enhanced versions after applying HE, CLAHE and complement to the original image and the corresponding histogram plots.

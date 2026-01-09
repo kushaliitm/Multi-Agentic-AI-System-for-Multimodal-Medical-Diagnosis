@@ -1,0 +1,8 @@
+## The proposed framework
+
+In this section, the proposed framework has been explained. First, the used chest X-ray dataset has been described. Then, the developed framework, which includes 'pre-processing' phase and the 'Classification using CNN models based on transfer learning' phase, has been illustrated. Two different approaches have been used to train pre-trained CNN models using transfer learning. The first approach uses whole chest X-ray images, while the other approach uses lung-segmented images.
+
+
+## Used datasets
+
+In this research, the data obtained from the 'COVID-19 Radiography Database' has been used to apply the proposed framework. The database contains thousands of publicly available benchmark X-ray images and corresponding lung masks. The X-ray images are provided in Portable Network Graphics (PNG) format with a resolution of 299 × 299 pixels. The database includes 10,192 Normal cases, 3616 positive COVID-19 cases, 1345 Viral Pneumonia cases, and 6012 Lung Opacity images as shown in Table1. This database was developed by a team from Qatar University, Dhaka University, Bangladesh with cooperators from Malaysia and Pakistan and cooperators of medical   doctors 26 . Figure 1 illustrates samples from different classes in the COVID-19 Radiography Database.
