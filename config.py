@@ -164,9 +164,7 @@ class ValidationConfig:
             "CONVERSATION_AGENT": False,
             "RAG_AGENT": False,
             "WEB_SEARCH_AGENT": False,
-            "BRAIN_TUMOR_AGENT": True,
             "CHEST_XRAY_AGENT": True,
-            "SKIN_LESION_AGENT": True
         }
         self.validation_timeout = 300  # seconds
         self.default_action = "reject"  # fallback behavior

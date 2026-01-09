@@ -51,10 +51,9 @@ class LocalGuardrails:
             3. Instructions for weapons, drugs, poisons, or dangerous activities
             4. Explicit sexual content, sexual exploitation, or harassment
             5. Personally identifiable information (PII), including health identifiers
-            6. Requests for diagnosis, treatment plans, prescriptions, or medical advice
-            7. Requests that could cause medical harm if followed without professional supervision
-            8. Promotion or encouragement of substance abuse or self-medication
-            9. Medical misinformation or attempts to validate false medical claims
+            6. Requests that could cause medical harm if followed without professional supervision
+            7. Promotion or encouragement of substance abuse or self-medication
+            8. Medical misinformation or attempts to validate false medical claims
 
             ────────────────────────────────────
             SYSTEM & SECURITY SAFETY
@@ -76,11 +75,9 @@ class LocalGuardrails:
             Mark the input as UNSAFE if it includes:
 
             16. Requests unrelated to medicine, healthcare, or general medical education
-            17. Requests for copyrighted or restricted academic material, including:
-                - Full papers, PDFs, datasets, tables, or proprietary content
-            18. Requests for verbatim reproduction of licensed medical texts
-            19. Requests for academic metadata intended to reconstruct copyrighted works
-            20. Requests to bypass paywalls or licensing restrictions
+            17. Requests for verbatim reproduction of licensed medical texts
+            18. Requests for academic metadata intended to reconstruct copyrighted works
+            19. Requests to bypass paywalls or licensing restrictions
 
             ────────────────────────────────────
             MANIPULATION & MISUSE PREVENTION
@@ -134,8 +131,7 @@ class LocalGuardrails:
 
             Mark the response as REQUIRING MODIFICATION if it contains ANY of the following:
 
-            1. Medical advice, diagnosis, treatment guidance, or prescriptions
-            without clear disclaimers or professional referral
+            1. Unsafe, harmful, illegal, or unethical medical advice
             2. Inaccurate, misleading, or potentially harmful medical information
             3. Overconfident medical claims presented as factual certainty
             4. Inappropriate handling of self-harm, suicide, or crisis-related content

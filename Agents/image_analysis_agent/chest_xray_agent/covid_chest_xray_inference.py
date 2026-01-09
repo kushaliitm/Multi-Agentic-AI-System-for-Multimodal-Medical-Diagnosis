@@ -19,7 +19,6 @@ class ChestXRayClassification:
 
     NOTE:
     This model is intended for research and decision-support only.
-    It is NOT a substitute for professional medical diagnosis.
     """
 
     def __init__(self, model_path: str, device: torch.device = None):

@@ -410,10 +410,6 @@ def create_agent_graph():
         • Use prior conversation context to maintain continuity  
         • Ask focused follow-up questions when necessary before responding  
 
-        ETHICAL & LEGAL CONSIDERATIONS  
-        • Always include disclaimers when discussing medical information  
-        • Encourage professional consultation for diagnosis or treatment decisions  
-
         ────────────────────────────────────
         OUTPUT STYLE
         ────────────────────────────────────
