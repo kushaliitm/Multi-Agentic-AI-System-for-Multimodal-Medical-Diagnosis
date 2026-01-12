@@ -11,7 +11,6 @@ A comprehensive multi-agent AI system designed for multimodal medical diagnosis 
 - 📚 Retrieval-Augmented Generation (RAG) with Qdrant vector database
 - 🌐 Web search integration for real-time medical information
 - 🛡️ Comprehensive input/output guardrails
-- 🎤 Voice input/output capabilities (speech-to-text, text-to-speech)
 - ✅ Human-in-the-loop validation for high-risk outputs
 - 🔒 Session management and conversation memory
 
@@ -135,22 +134,6 @@ Multi-Agentic-AI-System-for-Multimodal-Medical-Diagnosis/
 
 ---
 
-## 🛠️ Configuration ([`config.py`](config.py))
-
-All system configuration is centralized in [`config.py`](config.py):
-
-```python
-config.agent_decision          # Router LLM settings
-config.conversation            # General conversation LLM
-config.rag                     # RAG pipeline config
-config.medical_cv              # Vision model paths
-config.web_search              # Web search settings
-config.speech                  # ElevenLabs API keys
-config.validation              # Validation requirements
-config.api                     # Server settings
-config.ui                      # UI preferences
-```
-
 ### Key Settings:
 
 | Setting | Value | Purpose |
@@ -171,7 +154,6 @@ config.ui                      # UI preferences
 ### Prerequisites
 
 - Python 3.10+
-- Docker & Docker Compose (optional, for Qdrant)
 - API Keys:
   - OpenAI (GPT-4o)
   - ElevenLabs (speech synthesis)
@@ -213,12 +195,7 @@ config.ui                      # UI preferences
    QDRANT_API_KEY=...                 # If using remote Qdrant
    ```
 
-5. **Start Qdrant (local):**
-   ```bash
-   docker run -p 6333:6333 qdrant/qdrant:latest
-   ```
-
-6. **Ingest medical documents (optional):**
+5. **Ingest medical documents (optional):**
    ```bash
    # Single file
    python rag_data_ingest.py --file data/raw/medical_paper.pdf
@@ -227,72 +204,17 @@ config.ui                      # UI preferences
    python rag_data_ingest.py --dir data/raw/
    ```
 
-7. **Start the backend server:**
+6. **Start the backend server:**
    ```bash
    python app.py
    ```
    
    Server runs at: `http://localhost:8000`
 
-8. **Access the web UI:**
+7. **Access the web UI:**
    ```
    http://localhost:8000
    ```
-
----
-
-## 📚 API Endpoints
-
-### Health & UI
-
-| Endpoint | Method | Purpose |
-|----------|--------|---------|
-| `/` | GET | Serve web UI (index.html) |
-| `/health` | GET | Health check endpoint |
-
-### Chat & Query
-
-| Endpoint | Method | Purpose | Payload |
-|----------|--------|---------|---------|
-| `/chat` | POST | Text-only medical query | `{"query": "...", "conversation_history": []}` |
-| `/upload` | POST | Image + optional text | Multipart form: `image`, `text` |
-
-### Validation
-
-| Endpoint | Method | Purpose | Payload |
-|----------|--------|---------|---------|
-| `/validate` | POST | Human validation response | Form: `validation_result`, `comments` |
-
-### Speech
-
-| Endpoint | Method | Purpose | Payload |
-|----------|--------|---------|---------|
-| `/transcribe` | POST | Speech-to-text (WebM/MP3) | Audio file |
-| `/generate-speech` | POST | Text-to-speech (MP3) | `{"text": "...", "voice_id": "..."}` |
-
-### Response Format
-
-**Chat Response:**
-```json
-{
-  "status": "success",
-  "response": "Medical response text...",
-  "agent": "RAG_AGENT",
-  "confidence": 0.85,
-  "sources": [
-    {"title": "source_name", "path": "http://..."}
-  ]
-}
-```
-
-**Validation Response:**
-```json
-{
-  "status": "validated",
-  "message": "Output confirmed...",
-  "response": "Final response..."
-}
-```
 
 ---
 
@@ -327,20 +249,6 @@ config.ui                      # UI preferences
 - **Distance Metric:** Cosine
 - **Collection:** `medical_assistance_rag`
 
----
-
-## 🎙️ Voice Features
-
-### Speech-to-Text
-- **Provider:** ElevenLabs Scribe v1
-- **Supported Format:** WebM (browser), converts to MP3
-- **Features:** Language detection, audio event tagging, speaker diarization
-
-### Text-to-Speech
-- **Provider:** ElevenLabs
-- **Voices:** Multiple pre-configured options
-- **Settings:** Adjustable stability & similarity boost
-- **Output:** MP3 stream
 
 ---
 
@@ -375,122 +283,6 @@ Reviews for:
 2. UI presents validation form (Yes/No)
 3. Healthcare professional confirms/rejects
 4. Feedback stored for monitoring
-
----
-
-## 🎨 Web UI ([`templates/index.html`](templates/index.html))
-
-### Features
-
-- **Responsive Design** (Bootstrap 5)
-- **Real-time Chat** (Markdown support)
-- **Image Upload** (medical images with preview)
-- **Voice Controls:**
-  - 🎤 Record and transcribe speech
-  - 🔊 Play text responses as audio
-  - 📊 Agent information sidebar
-- **Conversation History** (session-based)
-- **Visual Indicators:**
-  - Thinking animations
-  - Agent tags (colored badges)
-  - Source attribution
-  - Confidence levels
-
-### Key Elements
-
-| Element | Purpose |
-|---------|---------|
-| Chat Area | Message display with Markdown rendering |
-| Input Box | Text/voice query input |
-| File Upload | Medical image attachment |
-| Sidebar | Agent info, capabilities, conversation controls |
-| Audio Controls | TTS playback with pause/resume |
-| Validation Form | Human confirmation UI for high-risk outputs |
-
----
-
-## 📊 Conversation State Management
-
-- **Backend State:** LangGraph with memory checkpointing
-- **Session Tracking:** Cookie-based session IDs
-- **Message History:** Limited to `MAX_CONVERSATION_HISTORY` messages
-- **State Reset:** `/clear-chat` endpoint (frontend only)
-
----
-
-## 🔍 Key Classes & Functions
-
-### RAG System ([`agents/rag_agent/__init__.py`](agents/rag_agent/__init__.py))
-
-```python
-class MedicalRAG:
-    def ingest_file(file_path) → Dict[success, chunks_processed, time]
-    def ingest_directory(dir_path) → Dict[success, documents_ingested, time]
-    def process_query(query, chat_history) → Dict[response, sources, confidence]
-```
-
-### Document Parsing ([`agents/rag_agent/doc_parser.py`](agents/rag_agent/doc_parser.py))
-
-```python
-class MedicalDocParser:
-    def parse_document(
-        document_path,
-        output_dir,
-        image_resolution_scale=2.0,
-        do_ocr=True,
-        do_tables=True,
-        do_formulas=True,
-        do_picture_desc=False
-    ) → Tuple[parsed_document, image_paths]
-```
-
-### Content Processing ([`agents/rag_agent/content_processor.py`](agents/rag_agent/content_processor.py))
-
-```python
-class ContentProcessor:
-    def summarize_images(images) → List[summaries]
-    def format_document_with_images(doc, summaries) → formatted_text
-    def chunk_document(formatted_doc) → List[semantic_chunks]
-```
-
-### Vector Store ([`agents/rag_agent/vectorstore_qdrant.py`](agents/rag_agent/vectorstore_qdrant.py))
-
-```python
-class VectorStore:
-    def create_vectorstore(
-        document_chunks,
-        document_path
-    ) → Tuple[qdrant_vectorstore, docstore, doc_ids]
-    def retrieve(query, top_k) → List[retrieved_docs]
-```
-
-### Response Generation ([`agents/rag_agent/response_generator.py`](agents/rag_agent/response_generator.py))
-
-```python
-class ResponseGenerator:
-    def generate_response(
-        query,
-        retrieved_docs,
-        picture_paths,
-        chat_history
-    ) → Dict[response, sources, confidence]
-```
-
-### Guardrails ([`agents/guardrails/local_guardrails.py`](agents/guardrails/local_guardrails.py))
-
-```python
-class LocalGuardrails:
-    def check_input(user_input) → "SAFE" | "UNSAFE: <reason>"
-    def check_output(user_query, llm_output) → revised_response | original_response
-```
-
-### Agent Decision ([`agents/agent_decision.py`](agents/agent_decision.py))
-
-```python
-def create_agent_graph() → compiled_langgraph
-def process_query(query, conversation_history) → Dict[agent_name, output, messages]
-def init_agent_state() → AgentState
-```
 
 ---
 
@@ -542,19 +334,6 @@ See [`requirements.txt`](requirements.txt) for complete list.
    Expected: Transcribed to text, processed, response played aloud
    ```
 
-### Validation Checklist
-
-- [ ] Guardrails block unsafe input
-- [ ] Guardrails revise unsafe output
-- [ ] RAG retrieval returns relevant docs
-- [ ] Confidence scores correlate with quality
-- [ ] Sources are accurately attributed
-- [ ] Human validation UI appears for medical images
-- [ ] Speech-to-text works with various accents
-- [ ] TTS output is clear and natural
-- [ ] Session state persists across requests
-- [ ] Image upload handles various formats
-
 ---
 
 ## 🚨 Limitations & Future Work
@@ -562,15 +341,11 @@ See [`requirements.txt`](requirements.txt) for complete list.
 ### Current Limitations
 - ⚠️ Medical image analysis limited to chest X-rays
 - ⚠️ Knowledge base limited to ingested documents
-- ⚠️ No integration with electronic health records (EHR)
-- ⚠️ Single-document summary only (multi-doc analysis planned)
 - ⚠️ Limited to English language
-- ⚠️ No persistent conversation storage (session-based only)
 
 ### Planned Enhancements
-- 🔜 PubMed literature search integration
+- 🔜 PubMed literature integration
 - 🔜 Multiple medical imaging modalities (CT, MRI, ultrasound)
-- 🔜 EHR system integration
 - 🔜 Multilingual support
 - 🔜 Persistent conversation logging
 - 🔜 Performance monitoring & observability
@@ -606,37 +381,10 @@ Ingestion result:
 
 ---
 
-## 🔒 Security Considerations
-
-### API Security
-- ✅ Session cookies with secure flags
-- ✅ Input validation (file type, size)
-- ✅ Rate limiting (config: `rate_limit: 10`)
-- ✅ CORS protection (frontend only)
-
-### Data Privacy
-- ⚠️ Uploaded images stored temporarily in `/uploads/backend`
-- ⚠️ Speech files auto-cleaned every 5 minutes
-- ⚠️ No encryption at rest (recommended for production)
-- ⚠️ API keys stored in `.env` (not committed)
-
-### Medical Safety
-- ✅ Guardrails prevent diagnosis generation
-- ✅ Human validation for critical outputs
-- ✅ Confidence scoring to indicate uncertainty
-- ✅ Clear disclaimers on limitations
-
----
 
 ## 📞 Support & Troubleshooting
 
 ### Common Issues
-
-**Issue:** Qdrant connection failed
-```
-Solution: Ensure Qdrant is running
-docker run -p 6333:6333 qdrant/qdrant:latest
-```
 
 **Issue:** OpenAI API key invalid
 ```
@@ -675,19 +423,12 @@ Solution:
 - [Qdrant Docs](https://qdrant.tech/documentation/)
 - [Docling](https://ds4sd.github.io/docling/)
 - [OpenAI API](https://platform.openai.com/docs/)
-- [ElevenLabs API](https://elevenlabs.io/docs/)
 
 ---
 
 ## 📄 License
 
-[Add your license here - MIT, Apache 2.0, etc.]
-
----
-
-## 👥 Contributors
-
-[List project contributors here]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
@@ -695,8 +436,7 @@ Solution:
 
 For questions, issues, or suggestions:
 - Open a GitHub issue
-- Contact: [email]
-- Documentation: See `/docs` (if available)
+- Contact: [kushalpatelds@gmail.com]
 
 ---
 
@@ -710,22 +450,16 @@ python -m venv venv && source venv/bin/activate
 pip install -r requirements.txt
 cp .env.example .env  # Add your API keys
 
-# 2. Start Qdrant
-docker run -p 6333:6333 qdrant/qdrant:latest
-
-# 3. Ingest documents (optional)
+# 2. Ingest documents (optional)
 python rag_data_ingest.py --dir data/raw/
 
-# 4. Run server
+# 3. Run server
 python app.py
 
-# 5. Access UI
+# 4. Access UI
 # Open http://localhost:8000 in browser
 ```
 
 ---
 
-**Last Updated:** 2024  
-**Version:** 2.0  
-**Status:** Active Development
 
